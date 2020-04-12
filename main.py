@@ -8,6 +8,7 @@ if(len(sys.argv) < 2):
     print("Please specify country. For all use \"all\"")
     print("Optional argument \"no_summary\"")
     print("For example: " + sys.argv[0] + " \"Finland\" \"no_summary\"")
+    print("For just the summary use: " + sys.argv[0] + " summary")
     exit()
 today = date.today()
 case_file_name = "cases/" + str(today) + "-cases.json"
@@ -33,11 +34,12 @@ all_cases = 0
 all_recoveries = 0
 all_deaths = 0
 active_cases = 0
+
 for p in data['Countries']:
     all_cases += p['TotalConfirmed']
     all_recoveries += p['TotalRecovered']
     all_deaths += p['TotalDeaths']
-    if search_word in p['Country']:
+    if search_word in p['Country'] and search_word != "summary":
         print("******************************************")
         print(p['Country'])
         print("Total cases: " + str(p['TotalConfirmed']))
