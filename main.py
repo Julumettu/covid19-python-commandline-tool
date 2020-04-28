@@ -39,7 +39,7 @@ for p in data['Countries']:
     all_cases += p['TotalConfirmed']
     all_recoveries += p['TotalRecovered']
     all_deaths += p['TotalDeaths']
-    if search_word in p['Country'] and search_word != "summary":
+    if search_word.lower() in p['Country'].lower() and search_word != "summary":
         print("******************************************")
         print(p['Country'])
         print("Total cases: " + str(p['TotalConfirmed']))
